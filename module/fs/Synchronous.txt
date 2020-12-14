@@ -1,0 +1,7 @@
+// when we send data like a bundle
+// fast
+// Not support multi-tasking
+
+
+// you can send only one request per season
+// once it's complete then you can send a new request
