@@ -1,0 +1,5 @@
+// npm is Node Package Manager
+// to hold the info like version, name, description etc
+
+// to create a npm
+// write command 'npm init --y' 

@@ -23,8 +23,8 @@ var server=http.createServer(function (req,res) {
     
 });
 
-server.listen(6969);
+server.listen(5050);
 
 // to test the response, browse: localhost:5050
 
-console.log("Server Run Successfully"); 
+console.log("Server2 Run Successfully"); 
