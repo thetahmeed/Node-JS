@@ -1,4 +1,4 @@
-// when we send data like a bundle
+// when we send data like a bundle and without any gap
 // fast
 // Not support multi-tasking
 

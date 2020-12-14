@@ -1,0 +1,6 @@
+// when we send data bit/character wise and with gap
+// slow
+// Support multi-tasking
+
+
+// you can send many request per season
