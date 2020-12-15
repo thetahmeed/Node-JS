@@ -1,5 +1,6 @@
 
 
+// reading file by FS module (sync and async way)
 
 
 var mHttp = require('http');
@@ -20,7 +21,7 @@ var mServer = mHttp.createServer(function(req, res){
 
          });  =*/
 
-         
+
         // here we are using 'async...' method
 
         var data = mFs.readFileSync('home.html')
