@@ -10,7 +10,7 @@ var mServer = mHttp.createServer(function(req, res){
 
     if(req.url == "/"){
 
-        mFs.readFile('home.html', function(err, data){
+        mFs.readFile('home.html', 'utf-8', function(err, data){
 
             if(err){
                 res.writeHead(200, {'Content-Type' : 'text/html'})
@@ -25,7 +25,7 @@ var mServer = mHttp.createServer(function(req, res){
     }
     if(req.url == "/chat.html"){
 
-        mFs.readFile('chat.html', function(err, data){
+        mFs.readFile('chat.html', 'utf-8', function(err, data){
 
             if(err){
                 res.writeHead(200, {'Content-Type' : 'text/html'})
@@ -40,7 +40,7 @@ var mServer = mHttp.createServer(function(req, res){
     }
     if(req.url == "/contact.html"){
 
-        mFs.readFile('contact.html', function(err, data){
+        mFs.readFile('contact.html', 'utf-8', function(err, data){
 
             if(err){
                 res.writeHead(200, {'Content-Type' : 'text/html'})
