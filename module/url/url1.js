@@ -10,5 +10,5 @@ var theReturnedUrl = url.parse(myURL, true);
 
 // for host, pathname & search
 console.log(theReturnedUrl.host); // www.facebook.com
-console.log(theReturnedUrl.pathname); // 
-console.log(theReturnedUrl.search); // 
+console.log(theReturnedUrl.pathname); // /home.php
+console.log(theReturnedUrl.search); // ?_rdc=1&_rdr 
