@@ -1,6 +1,6 @@
 
 
-// renaming file name by FS module (sync and async way)
+// writing file by FS module (sync and async way)
 
 
 var mHttp = require('http');
@@ -11,8 +11,8 @@ var mServer = mHttp.createServer(function(req, res){
     if(req.url == "/"){
 
         // async way
-        // first param is file name with ext, second param is file content, third param is callback functin
-        /*mFs.writeFile('text.txt', 'Trust me I am a text file', function(err){
+        // first param is old file path, second param is new file path, third param is callback functin
+        mFs.renameSync('./index.js', './index1.js', function(err){
             if(err){
                 res.writeHead(200, {'Content-Type' : 'text/html'})
                 res.write("Error found")
@@ -22,10 +22,11 @@ var mServer = mHttp.createServer(function(req, res){
                 res.write("No error found")
                 res.end()
             }
-        })*/
+        })
 
         // sync way
-        var err = mFs.writeFileSync('text2.txt', 'Trust me two I am text file too.');
+        /*var err = mFs.renameSync('./index.js', './index1.js');
+
         if(err){
             res.writeHead(200, {'Content-Type' : 'text/html'})
             res.write("Error found")
@@ -34,7 +35,7 @@ var mServer = mHttp.createServer(function(req, res){
             res.writeHead(200, {'Content-Type' : 'text/html'})
             res.write("No error found")
             res.end()
-        }
+        }*/
         
     }
 })
