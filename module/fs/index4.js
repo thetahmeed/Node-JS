@@ -11,8 +11,8 @@ var mServer = mHttp.createServer(function(req, res){
     if(req.url == "/"){
 
         // async way
-        // first param is file name with ext, second param is file content, third param is callback functin
-        /*mFs.writeFile('text.txt', 'Trust me I am a text file', function(err){
+        // first param is file path, second param is callback functin
+        /*mFs.unlink('./delete.txt', function(err){
             if(err){
                 res.writeHead(200, {'Content-Type' : 'text/html'})
                 res.write("Error found")
@@ -25,7 +25,8 @@ var mServer = mHttp.createServer(function(req, res){
         })*/
 
         // sync way
-        var err = mFs.writeFileSync('text2.txt', 'Trust me two I am text file too.');
+        var err = mFs.unlinkSync('./delete.txt');
+
         if(err){
             res.writeHead(200, {'Content-Type' : 'text/html'})
             res.write("Error found")
