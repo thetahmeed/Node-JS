@@ -23,7 +23,10 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
         
         //insertData(mongoClient);
         //deleteData(mongoClient);
-        deleteAllData(mongoClient);
+        //deleteAllData(mongoClient);
+        //findData1(mongoClient);
+        //findData2(mongoClient);
+        findData3(mongoClient);
     }
 
 })
@@ -37,7 +40,7 @@ function insertData(mongoClient) {
     // this is the data
     let myData = {
         name: "Tahmeed",
-        phone: "5",
+        phone: "3",
         country: "Bangladesh"
     }
 
@@ -52,7 +55,7 @@ function insertData(mongoClient) {
 
 }
 
-// 2. deleting data (Single)
+// 2.0 deleting data (Single)
 function deleteData(mongoClient){
 
     var myDB = mongoClient.db('user')               // getting database
@@ -87,4 +90,56 @@ function deleteAllData(mongoClient){
         }
     })
 
+}
+
+// 3.0 finding data (Single-First Data)
+function findData1(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    myDBTable.findOne(function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+
+}
+
+// 3.1 finding data (Single-Specific Data)
+function findData2(mongoClient){
+
+    let myData = {
+        phone: "4"
+    }
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    myDBTable.findOne(myData, function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+
+}
+
+// 3.2 finding data (All data)
+function findData3(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    myDBTable.find().toArray(function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+    
 }
