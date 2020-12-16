@@ -26,7 +26,8 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
         //deleteAllData(mongoClient);
         //findData1(mongoClient);
         //findData2(mongoClient);
-        findData3(mongoClient);
+        //findData3(mongoClient);
+        findData4(mongoClient);
     }
 
 })
@@ -135,6 +136,32 @@ function findData3(mongoClient){
     var myDBTable = myDB.collection('user_list')    // getting table
 
     myDBTable.find().toArray(function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+    
+}
+
+// 3.3 finding data (Only column data )
+function findData4(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    var itemOBJ = {} // because we are selecting all data
+    // specifing the column
+    var itemProjection = { 
+        projection : {
+            // we can use comma to select multiple column
+            name: "",
+            country: ""
+        }
+    }
+
+    myDBTable.find(itemOBJ, itemProjection).toArray(function(err, result){
         if(err){
             console.log("Error!")
         }else{
