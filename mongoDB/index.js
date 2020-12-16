@@ -78,11 +78,12 @@ function deleteAllData(mongoClient){
     var myDB = mongoClient.db('user')               // getting database
     var myDBTable = myDB.collection('user_list')    // getting table
 
-    myDBTable.deleteMany(function(err, resultOBJ){
+    myDBTable.deleteMany(function(err, result){
         if(err){
             console.log("Error!")
         }else{
-            console.log(resultOBJ.result.n+" item is deleted.")
+            // first "result" is from the top, second "result" is the return array name, "n" is the key name
+            console.log(result.result.n+" item is deleted.")
         }
     })
 
