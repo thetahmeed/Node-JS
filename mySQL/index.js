@@ -24,12 +24,14 @@ con.connect(function(err){
         console.log("Found a database")
 
         // sending SQL conection 
-        
+
         //insertData(con)
 
         //deletData(con)
 
-        //updateData(con);
+        //updateData(con)
+
+        selectData(con)
     }
 });
 
@@ -55,7 +57,8 @@ function insertData(con){
 function deletData(con){
 
     // command for deleting data // you can find it on phmyadmin > SQL > delete
-    // let SQL_COMMAND = "DELETE FROM `user_list` WHERE `user_list`.`id` = 4" or
+    //  let SQL_COMMAND = "DELETE FROM `user_list` WHERE `id` = '4'" or (not working here)
+    //  let SQL_COMMAND = "DELETE FROM `user_list` WHERE `user_list`.`id` = 4" or
     let SQL_COMMAND = "DELETE FROM `user_list` WHERE `user_list`.`name` = 'Rana'"
 
     con.query(SQL_COMMAND, function(err){
@@ -82,6 +85,27 @@ function updateData(con){
             console.log("Facing error to updating data")
         }else{
             console.log("Data updated")
+        }
+
+    })
+
+}
+
+// to seleting data from the database
+function selectData(con){
+
+    // command for selecting all data // you can find it on phmyadmin > SQL > select*
+    let SQL_COMMAND = "SELECT * FROM `user_list`"
+    // command for specific data // you can find it on phmyadmin > SQL > seelct
+    //  let SQL_COMMAND = "SELECT `name` FROM `user_list` WHERE `user_list`.`id` = '5'"
+
+    con.query(SQL_COMMAND, function(err, result){
+
+        if(err){
+            console.log("Facing error to selecting data")
+        }else{
+            console.log("Data selected")
+            console.log(result)
         }
 
     })
