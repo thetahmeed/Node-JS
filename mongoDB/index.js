@@ -198,7 +198,7 @@ function findData6(mongoClient){
     var myDB = mongoClient.db('user')               // getting database
     var myDBTable = myDB.collection('user_list')    // getting table
 
-    // Only 2 will return
+    // Only 2 JSON object will return
     myDBTable.find().limit(2).toArray(function(err, result){
         if(err){
             console.log("Error!")
