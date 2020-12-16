@@ -24,7 +24,12 @@ con.connect(function(err){
         console.log("Found a database")
 
         // sending SQL conection 
-        insertData(con)
+        
+        //insertData(con)
+
+        //deletData(con)
+
+        //updateData(con);
     }
 });
 
@@ -32,14 +37,51 @@ con.connect(function(err){
 function insertData(con){
 
     // command for inserting data // you can find it on phmyadmin > SQL > insert
-    let SQL_COMMAND = "INSERT INTO `user_list`(`name`, `phone`) VALUES ('Afifa','01745241526')"
+    let SQL_COMMAND = "INSERT INTO `user_list`(`name`, `phone`) VALUES ('Rana','01745245755')"
 
     con.query(SQL_COMMAND, function(err){
 
         if(err){
-            console.log("facing error to inserting data")
+            console.log("Facing error to inserting data")
         }else{
             console.log("Data insered")
+        }
+
+    })
+
+}
+
+// to delete data from the database
+function deletData(con){
+
+    // command for deleting data // you can find it on phmyadmin > SQL > delete
+    // let SQL_COMMAND = "DELETE FROM `user_list` WHERE `user_list`.`id` = 4" or
+    let SQL_COMMAND = "DELETE FROM `user_list` WHERE `user_list`.`name` = 'Rana'"
+
+    con.query(SQL_COMMAND, function(err){
+
+        if(err){
+            console.log("Facing error to deleting data")
+        }else{
+            console.log("Data deleted")
+        }
+
+    })
+
+}
+
+// to update data from the database
+function updateData(con){
+
+    // command for updating data // you can find it on phmyadmin > SQL > update
+    let SQL_COMMAND = "UPDATE `user_list` SET `name`='Tahmeedul',`phone`='50125485745' WHERE `user_list`.`id` = '3'"
+
+    con.query(SQL_COMMAND, function(err){
+
+        if(err){
+            console.log("Facing error to updating data")
+        }else{
+            console.log("Data updated")
         }
 
     })
