@@ -27,7 +27,9 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
         //findData1(mongoClient);
         //findData2(mongoClient);
         //findData3(mongoClient);
-        findData4(mongoClient);
+        //findData4(mongoClient);
+        //findData5(mongoClient);
+        findData6(mongoClient);
     }
 
 })
@@ -162,6 +164,42 @@ function findData4(mongoClient){
     }
 
     myDBTable.find(itemOBJ, itemProjection).toArray(function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+    
+}
+
+// 3.4 finding all data by query (target is value)
+function findData5(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    // searching all the raw where "name" value is "Tahmeed" // use comma for multiple condition
+    var query = {name: "Tahmeed", phone: "5"}
+
+    myDBTable.find(query).toArray(function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+    
+}
+
+// 3.5 finding data (with Limit)
+function findData6(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    // Only 2 will return
+    myDBTable.find().limit(2).toArray(function(err, result){
         if(err){
             console.log("Error!")
         }else{
