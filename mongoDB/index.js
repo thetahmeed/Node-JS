@@ -20,36 +20,70 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
         console.log("There is an error!")
     }else{
         console.log("Done!")
-        insertData(mongoClient);
+        
+        //insertData(mongoClient);
+        //deleteData(mongoClient);
+        deleteAllData(mongoClient);
     }
 
 })
 
-// inserting data
+// 1 inserting data
 function insertData(mongoClient) {
 
-    // getting database
-    var myDB = mongoClient.db('user')
-
-    // getting table
-    var myDBTable = myDB.collection('user_list')
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
 
     // this is the data
-    var myData = {
+    let myData = {
         name: "Tahmeed",
-        phone: "01700547406",
+        phone: "5",
         country: "Bangladesh"
     }
 
     // pushing data to the database
     myDBTable.insertOne(myData, function(err){
-
         if(err){
             console.log("Error!")
         }else{
             console.log("Data is added")
         }
+    })
 
+}
+
+// 2. deleting data (Single)
+function deleteData(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    let myData = {
+        phone: "2"
+    }
+
+    myDBTable.deleteOne(myData, function(err){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log("Data is deleted")
+        }
+    })
+
+}
+
+// 2.1 deleting data (All)
+function deleteAllData(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    myDBTable.deleteMany(function(err){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log("All data is deleted")
+        }
     })
 
 }
