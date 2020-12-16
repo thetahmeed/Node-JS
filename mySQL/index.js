@@ -105,7 +105,12 @@ function selectData(con){
             console.log("Facing error to selecting data")
         }else{
             console.log("Data selected")
+            // it's return a JSON file
             console.log(result)
+
+            // converting JSON to string
+            var resultString = JSON.stringify(result);
+            console.log("Result as a string: "+ resultString)
         }
 
     })
