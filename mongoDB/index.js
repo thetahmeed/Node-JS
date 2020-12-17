@@ -30,7 +30,7 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
         //findData4(mongoClient);
         //findData5(mongoClient);
         //findData6(mongoClient);
-        findData7(mongoClient);
+        updateData7(mongoClient);
     }
 
 })
@@ -224,6 +224,26 @@ function findData7(mongoClient){
             console.log("Error!")
         }else{
             console.log(result)
+        }
+    })
+    
+}
+
+// 4. updating data (Single)
+function updateData7(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    var where = {name: "Tahmeed"}                   // where we want to change
+    var what = {$set: {country: "USA"}}           // what we want to change
+
+    // Only 2 JSON object will return
+    myDBTable.updateOne(where, what, function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log("Updated.")
         }
     })
     
