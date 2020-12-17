@@ -36,6 +36,12 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
 
         //updateData1(mongoClient);
         //updateData2(mongoClient);
+
+        //createNewCollection(mongoClient);
+
+        deleteCollection(mongoClient);
+
+
     }
 
 })
@@ -272,4 +278,36 @@ function updateData2(mongoClient){
         }
     })
     
+}
+
+// 5. creting a new collection aka new database Table
+function createNewCollection(mongoClient){
+
+    var myDB = mongoClient.db('user')                       // getting database
+    
+    // creating a new table
+    var myDBTable = myDB.createCollection('user_list2', function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log("New table created.")
+        }       
+    })      
+
+}
+
+// 6. deleting a collection aka new database Table
+function deleteCollection(mongoClient){
+
+    var myDB = mongoClient.db('user')                       // getting database
+
+    // deleting a table
+    var myDBTable = myDB.dropCollection('user_list2', function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log("Table deleted.")
+        }
+    })      
+
 }
