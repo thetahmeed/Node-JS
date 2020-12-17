@@ -29,7 +29,8 @@ mMongo.connect(mUrl, mConfig, function(err, mongoClient){
         //findData3(mongoClient);
         //findData4(mongoClient);
         //findData5(mongoClient);
-        findData6(mongoClient);
+        //findData6(mongoClient);
+        findData7(mongoClient);
     }
 
 })
@@ -200,6 +201,25 @@ function findData6(mongoClient){
 
     // Only 2 JSON object will return
     myDBTable.find().limit(2).toArray(function(err, result){
+        if(err){
+            console.log("Error!")
+        }else{
+            console.log(result)
+        }
+    })
+    
+}
+
+// 3.6 finding data (with Sorting)
+function findData7(mongoClient){
+
+    var myDB = mongoClient.db('user')               // getting database
+    var myDBTable = myDB.collection('user_list')    // getting table
+
+    var sortingPattern = {phone:1} // 1 = Small to Big, -1 = Big to small
+
+    // Only 2 JSON object will return
+    myDBTable.find().sort(sortingPattern).toArray(function(err, result){
         if(err){
             console.log("Error!")
         }else{
